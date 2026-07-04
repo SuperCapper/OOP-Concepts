@@ -42,7 +42,8 @@ class Car:
         return f"{self.brand} - {self.color}"
 ```
 
-In this example, Car is a class. It contains data like brand, color, and speed.
+In this example, Car is a class. It defines what a car should have and what a car can do.
+It contains data like brand, color, and speed.
 It also contains actions like start(), increaseSpeed(), and getDetails().
 
 So instead of keeping car data in random variables and writing separate functions outside, we keep related data and related behavior together inside one class.
@@ -67,6 +68,38 @@ class Book:
 An object (or instance) is a concrete realization of a class — actual data
 in memory that follows the shape the class defines. You can create many
 objects from a single class, each with its own state.
+
+We created a Car class in the previous section. That Car class only defines what a car should have and what a car can do.
+
+<img width="1100" height="619" alt="image" src="https://github.com/user-attachments/assets/9400420b-2338-4c58-b810-474beac96f69" />
+
+It says a car can have:
+* brand
+* color
+* speed
+
+And it can do actions like:
+* start
+* stop
+* increase speed
+
+But the class itself is not a real car. To use it, we need to create objects from it. Here is an example:
+
+"    " Car car1 = new Car("Toyota", "Red")
+"    " Car car2 = new Car("Honda", "Blue")
+"    " Car car3 = new Car("Tesla", "Black")
+
+Here, car1, car2, and car3 are objects. All three objects are created from the same Car class. But each object has its own values.
+
+"    " car1 is a red Toyota.
+
+"    " car2 is a blue Honda.
+
+"    " car3 is a black Tesla.
+
+Now we can use these objects like this:
+
+
 
 ```python
 book1 = Book("Dune", "Frank Herbert")
