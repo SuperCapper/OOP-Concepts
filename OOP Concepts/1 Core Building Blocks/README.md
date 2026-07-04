@@ -1,12 +1,42 @@
 # Core Building Blocks
 
 Object-Oriented Programming (OOP) organizes code around *things* rather than
-just steps. These are the foundational pieces every OOP language builds on.
+just steps.
 
 ## 1. Class
 
-A class is a blueprint — it defines what data (attributes) and behavior
-(methods) its instances will have, but it doesn't exist as a "thing" in
+A class is like a plan or a blueprint — it defines what data (attributes) and behavior
+(methods) its instances will have.
+
+<img width="1100" height="619" alt="image" src="https://github.com/user-attachments/assets/35512d2f-2c16-4f43-951b-aab40dacedc1" />
+
+For example, think about a car.
+
+A car has some information:
+* brand
+* color
+* speed
+
+And a car can do some actions:
+* start
+* stop
+* increase speed
+
+So, if we want to represent a car in code, we create a Car class.
+
+[TODO: Example goes here]
+
+In this example, Car is a class. It contains data like brand, color, and speed.
+It also contains actions like start(), increaseSpeed(), and getDetails().
+
+So instead of keeping car data in random variables and writing separate functions outside, we keep related data and related behavior together inside one class.
+
+A simple real-life example is a house blueprint. A blueprint shows where the rooms, doors, windows, and walls should be.
+But you cannot live inside a blueprint. You need to build an actual house from it.
+
+In the same way, a class is only a blueprint. It only defines the structure. 
+
+***NOTE***: It doesn't exist as a "thing" in
 memory until you create an object from it.
 
 ```python
