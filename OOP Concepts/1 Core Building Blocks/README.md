@@ -157,8 +157,23 @@ class NotificationService(ABC):
         ...
 ```
 
-They send a message. So instead of writing different logic everywhere, we can create one common interface called NotificationService.
+Now we can create different classes using this interface.
 
+```python
+class EmailNotification(NotificationService):
+    def send_message(self, user, message):
+        print(f"Sending email to {user}: {message}")
+
+
+class SMSNotification(NotificationService):
+    def send_message(self, user, message):
+        print(f"Sending SMS to {user}: {message}")
+
+
+class WhatsAppNotification(NotificationService):
+    def send_message(self, user, message):
+        print(f"Sending WhatsApp message to {user}: {message}")
+```
 
 
 ## 4. Constructor
