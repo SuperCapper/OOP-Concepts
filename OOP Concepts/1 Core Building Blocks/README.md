@@ -110,6 +110,16 @@ car3.start()
 car3.increase_speed(80)
 ```
 
+Each object works independently.
+
+If we increase the speed of car1, it will not change the speed of car2. If car2 starts, it does not mean car3 has also started.
+
+They are separate objects created from the same class. This is one of the most important ideas in OOP. A class gives the structure. An object gives the real values.
+
+Think about a house blueprint again. One blueprint can be used to build many houses. But after building them, each house can have a different color, different owner, different furniture, and different address. In the same way, one class can create many objects, and every object can have its own data.
+
+So, classes and objects together help us keep related data and behavior in one clean place. 
+
 ## 3. Attributes (Fields / Properties)
 
 Attributes are the data a class stores — the variables attached to each
