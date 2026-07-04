@@ -63,7 +63,7 @@ class Book:
         self.author = author
 ```
 
-## 2. Object
+## 2. Objects
 
 An object (or instance) is a concrete realization of a class — actual data
 in memory that follows the shape the class defines. You can create many
@@ -116,17 +116,47 @@ If we increase the speed of car1, it will not change the speed of car2. If car2 
 
 They are separate objects created from the same class. This is one of the most important ideas in OOP. A class gives the structure. An object gives the real values.
 
-Think about a house blueprint again. One blueprint can be used to build many houses. But after building them, each house can have a different color, different owner, different furniture, and different address. In the same way, one class can create many objects, and every object can have its own data.
+Think about a house blueprint again. One blueprint can be used to build many houses. 
+But after building them, each house can have a different color, different owner, different furniture, and different address. 
+In the same way, one class can create many objects, and every object can have its own data.
 
 So, classes and objects together help us keep related data and behavior in one clean place. 
 
-## 3. Attributes (Fields / Properties)
+## 3. Interfaces
 
-Attributes are the data a class stores — the variables attached to each
-object. They represent the *state* of an object at any given moment
-(`title`, `author` above).
+In bigger applications, sometimes we do not only want to create objects. We also want to define a common set of actions that different classes must follow. 
+That is where interfaces come in.
 
-## 4. Methods
+An interface is like a contract. It tells a class what methods it must have, but it does not explain how those methods should work. In simple words, an interface says:
+
+“This class must provide these actions.”
+
+But the class can decide its own way to perform those actions.
+
+Let’s take a very simple example.
+
+Imagine we are building a notification system. In an app, we may need to send notifications in different ways:
+
+* Email
+* SMS
+* WhatsApp
+* Push notification
+
+<img width="1100" height="619" alt="image" src="https://github.com/user-attachments/assets/bf66509d-0672-44f4-9683-5baa0ffce415" />
+
+All of them are different, but they have one common job:
+
+They send a message. So instead of writing different logic everywhere, we can create one common interface called ***NotificationService***.
+
+
+
+## 4. Constructor
+
+The constructor is the special method that runs when an object is created.
+It's responsible for setting up an object's initial state. In Python this
+is `__init__`; in Java/C# it's a method with the same name as the class.
+
+## 5. Methods
 
 Methods are functions defined on a class that operate on its attributes.
 They represent the *behavior* an object can perform.
@@ -141,11 +171,11 @@ class Book:
         return f"{self.title} by {self.author}"
 ```
 
-## 5. Constructor
+## 6. Attributes (Fields / Properties)
 
-The constructor is the special method that runs when an object is created.
-It's responsible for setting up an object's initial state. In Python this
-is `__init__`; in Java/C# it's a method with the same name as the class.
+Attributes are the data a class stores — the variables attached to each
+object. They represent the *state* of an object at any given moment
+(`title`, `author` above).
 
 ## Why this matters
 
