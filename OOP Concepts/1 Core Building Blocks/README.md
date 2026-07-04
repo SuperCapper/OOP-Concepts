@@ -157,6 +157,9 @@ class NotificationService(ABC):
         ...
 ```
 
+They send a message. So instead of writing different logic everywhere, we can create one common interface called NotificationService.
+
+
 
 ## 4. Constructor
 
