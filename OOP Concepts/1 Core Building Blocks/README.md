@@ -101,11 +101,13 @@ Here, car1, car2, and car3 are objects. All three objects are created from the s
 
 Now we can use these objects like this:
 
-
-
 ```python
-book1 = Book("Dune", "Frank Herbert")
-book2 = Book("Piranesi", "Susanna Clarke")
+car1.start()
+car1.increase_speed(40)
+car2.start()
+car2.increase_speed(60)
+car3.start()
+car3.increase_speed(80)
 ```
 
 ## 3. Attributes (Fields / Properties)
