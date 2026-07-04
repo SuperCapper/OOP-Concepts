@@ -186,7 +186,14 @@ They all have the sendMessage() method. But each class has its own way of sendin
 * WhatsApp sends a WhatsApp message.
 * Now we can use the interface like this:
 
-[insert here]
+```python
+class AlertManager:
+    def __init__(self, notification_service):
+        self.notification_service = notification_service
+
+    def send_alert(self, user):
+        self.notification_service.send_message(user, "Your order has been shipped.")
+```
 
 ## 4. Constructor
 
