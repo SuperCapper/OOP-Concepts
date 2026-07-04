@@ -85,7 +85,11 @@ And it can do actions like:
 
 But the class itself is not a real car. To use it, we need to create objects from it. Here is an example:
 
-[example code here]
+```python
+car1 = Car("Toyota", "Red")
+car2 = Car("Honda", "Blue")
+car3 = Car("Tesla", "Black")
+```
 
 Here, car1, car2, and car3 are objects. All three objects are created from the same Car class. But each object has its own values.
 
