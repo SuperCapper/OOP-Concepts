@@ -24,7 +24,23 @@ And a car can do some actions:
 
 So, if we want to represent a car in code, we create a Car class.
 
-[TODO: Example goes here]
+```python
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+        self.speed = 0
+
+    def start(self):
+        print(f"{self.brand} car has started.")
+
+    def increase_speed(self, value):
+        self.speed = self.speed + value
+        print(f"Current speed: {self.speed} km/h")
+
+    def get_details(self):
+        return f"{self.brand} - {self.color}"
+```
 
 In this example, Car is a class. It contains data like brand, color, and speed.
 It also contains actions like start(), increaseSpeed(), and getDetails().
