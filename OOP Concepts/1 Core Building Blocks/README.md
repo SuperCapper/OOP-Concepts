@@ -85,9 +85,7 @@ And it can do actions like:
 
 But the class itself is not a real car. To use it, we need to create objects from it. Here is an example:
 
-"    " Car car1 = new Car("Toyota", "Red")
-"    " Car car2 = new Car("Honda", "Blue")
-"    " Car car3 = new Car("Tesla", "Black")
+[example code here]
 
 Here, car1, car2, and car3 are objects. All three objects are created from the same Car class. But each object has its own values.
 
