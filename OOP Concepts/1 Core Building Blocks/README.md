@@ -148,6 +148,14 @@ All of them are different, but they have one common job:
 
 They send a message. So instead of writing different logic everywhere, we can create one common interface called ***NotificationService***.
 
+```python
+from abc import ABC, abstractmethod
+
+class NotificationService(ABC):
+    @abstractmethod
+    def send_message(self, user, message):
+        ...
+```
 
 
 ## 4. Constructor
