@@ -157,6 +157,9 @@ class NotificationService(ABC):
         ...
 ```
 
+This interface says:
+
+Any class that wants to become a notification service must have a sendMessage() method.
 Now we can create different classes using this interface.
 
 ```python
@@ -175,6 +178,15 @@ class WhatsAppNotification(NotificationService):
         print(f"Sending WhatsApp message to {user}: {message}")
 ```
 
+Here, all three classes follow the same interface.
+
+They all have the sendMessage() method. But each class has its own way of sending the message. 
+* Email sends an email.
+* SMS sends a text message.
+* WhatsApp sends a WhatsApp message.
+* Now we can use the interface like this:
+
+[insert here]
 
 ## 4. Constructor
 
