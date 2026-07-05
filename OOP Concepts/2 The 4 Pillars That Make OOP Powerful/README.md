@@ -6,6 +6,10 @@ reason about.
 
 ## 1. Encapsulation
 
+[Insert here]
+
+***
+
 Encapsulation means bundling data and the methods that operate on it inside
 a single unit (a class), and hiding internal details from the outside world.
 Callers interact with an object through its public interface, not by
