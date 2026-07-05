@@ -184,7 +184,8 @@ They all have the sendMessage() method. But each class has its own way of sendin
 * Email sends an email.
 * SMS sends a text message.
 * WhatsApp sends a WhatsApp message.
-* Now we can use the interface like this:
+
+Now we can use the interface like this:
 
 ```python
 class AlertManager:
@@ -194,6 +195,15 @@ class AlertManager:
     def send_alert(self, user):
         self.notification_service.send_message(user, "Your order has been shipped.")
 ```
+
+Now AlertManager does not care whether the message is going through email, SMS, or WhatsApp.
+
+It only knows one thing:
+
+There is a NotificationService, and it can send a message. That is the power of an interface. 
+Later, if we want to switch from email to SMS, we do not need to rewrite the AlertManager class. We only change the object we pass into it.
+
+[insert here]
 
 ## 4. Constructor
 
