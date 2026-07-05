@@ -237,7 +237,136 @@ Inheritance lets a class (the *subclass*/*child*) reuse and extend the
 attributes and methods of another class (the *superclass*/*parent*),
 modeling an "is-a" relationship.
 
-[Insert here]
+In simple words, inheritance means one class can take properties and
+methods from another class. The class that gives the common code is
+called the parent class. The class that receives that code is called
+the child class. This helps us avoid writing the same code again and
+again.
+
+Let's understand this with a simple real-world example.
+
+Think about different types of employees in a company. A company can
+have:
+
+* full-time employees
+* part-time employees
+* interns
+
+All of them are employees.
+
+So they may have some common details:
+
+* name
+* employee ID
+* department
+
+And they may have some common actions:
+
+* show employee details
+* calculate salary
+
+Instead of writing these common things again in every class, we can
+create one parent class called `Employee`. Then other classes can
+inherit from it.
+
+Here is a simple Python example:
+
+```python
+class Employee:
+    def __init__(self, name, employee_id, department):
+        self.name = name
+        self.employee_id = employee_id
+        self.department = department
+
+    def show_details(self):
+        print(f"Name: {self.name}")
+        print(f"Employee ID: {self.employee_id}")
+        print(f"Department: {self.department}")
+```
+
+Here, `Employee` is the parent class. It contains common data and common
+behavior. Now we can create a child class called `FullTimeEmployee`.
+
+```python
+class FullTimeEmployee(Employee):
+    def __init__(self, name, employee_id, department, monthly_salary):
+        super().__init__(name, employee_id, department)
+        self.monthly_salary = monthly_salary
+
+    def calculate_salary(self):
+        print(f"Monthly Salary: {self.monthly_salary}")
+```
+
+Now let's create another child class called `Intern`.
+
+```python
+class Intern(Employee):
+    def __init__(self, name, employee_id, department, stipend):
+        super().__init__(name, employee_id, department)
+        self.stipend = stipend
+
+    def calculate_stipend(self):
+        print(f"Monthly Stipend: {self.stipend}")
+```
+
+Now both `FullTimeEmployee` and `Intern` get common details from the
+`Employee` class.
+
+They do not need to write `name`, `employee_id`, `department`, and
+`show_details()` again.
+
+We can use them like this:
+
+```python
+emp1 = FullTimeEmployee(
+    "Shivam",
+    "EMP101",
+    "Engineering",
+    60000,
+)
+emp1.show_details()
+emp1.calculate_salary()
+
+intern1 = Intern(
+    "Rahul",
+    "INT201",
+    "Development",
+    15000,
+)
+intern1.show_details()
+intern1.calculate_stipend()
+```
+
+Here, both objects can use `show_details()` because that method comes
+from the parent `Employee` class.
+
+But they also have their own special behavior. A full-time employee has a
+salary. An intern has a stipend. That is the main idea of inheritance.
+
+It helps child classes reuse common code from a parent class and still
+add their own specific behavior.
+
+But inheritance should be used carefully. Use inheritance only when there
+is a clear "is-a" relationship. For example:
+
+A full-time employee is an employee.
+
+An intern is an employee.
+
+A car is a vehicle.
+
+A dog is an animal.
+
+These are natural relationships. But do not use inheritance only because
+you want to reuse some code. If the relationship does not feel natural,
+inheritance can make the code confusing. In that case, composition is
+usually a better option.
+
+So remember this simple line:
+
+Inheritance allows one class to reuse and extend the behavior of another
+class. It helps us reduce repeated code when classes share a real
+parent-child relationship.
 
 
 **Why it matters:** it avoids duplicating shared logic across related
