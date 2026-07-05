@@ -90,7 +90,88 @@ It is a has-a relationship, but not a very strict one.
 
 <img width="1100" height="880" alt="image" src="https://github.com/user-attachments/assets/3c1fbb91-7455-43e2-acd0-560f4eb93988" />
 
-[insert here]
+Let's understand this with a simple real-world example.
+
+Think about a school and teachers. A school has many teachers. But
+teachers can exist without that school. If a school closes, the teachers
+do not disappear. They can join another school. So the school has
+teachers, but it does not fully control the life of the teachers. That is
+aggregation.
+
+Let's see this in Python:
+
+```python
+class School:
+    def __init__(self, name):
+        self.name = name
+        self.teachers = []
+
+    def add_teacher(self, teacher):
+        self.teachers.append(teacher)
+
+    def show_teachers(self):
+        print(f"Teachers in {self.name}:")
+        for teacher in self.teachers:
+            print(teacher.get_name())
+```
+
+Now we create a `Teacher` class:
+
+```python
+class Teacher:
+    def __init__(self, name, subject):
+        self.name = name
+        self.subject = subject
+
+    def get_name(self):
+        return f"{self.name} teaches {self.subject}"
+```
+
+Now let's use both classes:
+
+```python
+teacher1 = Teacher("Mr. Sharma", "Math")
+teacher2 = Teacher("Ms. Verma", "Science")
+
+school = School("Green Valley School")
+school.add_teacher(teacher1)
+school.add_teacher(teacher2)
+school.show_teachers()
+```
+
+Here, the `Teacher` objects are created outside the `School` class. After
+that, we add them to the school. This is important. The school is not
+creating the teachers internally. The teachers already exist, and the
+school is only keeping a reference to them. That means teachers can still
+exist even if the school object is removed. For example, the same teacher
+can join another school:
+
+```python
+another_school = School("Sunrise Public School")
+another_school.add_teacher(teacher1)
+```
+
+Here, `teacher1` can be reused in another school. This shows that the
+teacher has its own independent life. That is the main idea of
+aggregation. The whole object has parts, but the parts can survive
+without the whole.
+
+Some more examples:
+
+* A department has employees.
+* A library has books.
+* A team has players.
+* A school has teachers.
+
+In all these examples, the smaller objects can still exist even if the
+bigger object is removed.
+
+So remember this simple line:
+
+Aggregation means one object has another object, but the child object can
+still exist independently. In association, objects are just connected. In
+aggregation, one object has another object. But the ownership is still
+weak.
 
 A "has-a" relationship where one class contains references to other
 objects, but those objects can exist independently of the container. It's
