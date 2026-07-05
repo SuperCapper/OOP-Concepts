@@ -176,24 +176,94 @@ weak.
 
 ## 3. Composition
 
-A stronger "has-a" relationship where the contained object's lifecycle is
-tied to the containing object — if the whole is destroyed, so are its
-parts.
+Composition is a stronger form of aggregation. In simple words,
+composition means one object owns another object completely, and the
+owned object cannot exist without it. It is a "has-a" relationship, but
+this time the ownership is strict, not weak.
+
+Let's understand this with a simple real-world example.
+
+Think about a car and its engine. A car has an engine. But this engine is
+not a general-purpose engine that gets handed around between cars — it is
+built specifically for that car, as one of its parts. If the car is
+scrapped, that specific engine is scrapped along with it. It does not get
+reused inside another car afterward. Unlike a school and its teachers, the
+part here cannot outlive the whole.
+
+That is composition.
+
+Let's see this in Python:
 
 ```python
 class Engine:
-    def start(self):
-        print("Engine starting")
+    def __init__(self, horsepower):
+        self.horsepower = horsepower
 
+    def start(self):
+        print(f"Engine ({self.horsepower} HP) starting")
+```
+
+Now we create a `Car` class:
+
+```python
 class Car:
-    def __init__(self):
-        self.engine = Engine()   # Engine is created and owned by Car
+    def __init__(self, brand):
+        self.brand = brand
+        self.engine = Engine(150)   # Engine is created inside Car
 
     def start(self):
+        print(f"{self.brand} is starting...")
         self.engine.start()
 ```
 
-The `Engine` here has no meaningful existence outside its `Car`.
+Now let's use it:
+
+```python
+car = Car("Toyota")
+car.start()
+```
+
+Here, notice something important. Unlike the `School`/`Teacher` example,
+the `Engine` object is not created outside the `Car` and then passed in.
+It is created *inside* the `Car`'s own constructor. That means the
+`Engine` has no independent existence — it is born together with its
+`Car`, and it dies together with its `Car`. There is no way to keep using
+that same `Engine` object after the `Car` object is gone.
+
+Compare this to aggregation:
+
+```python
+# Aggregation — the Engine exists on its own, Car just borrows it
+class Car:
+    def __init__(self, brand, engine):
+        self.brand = brand
+        self.engine = engine   # passed in, not created here
+```
+
+If `engine` is passed into the constructor from outside, it's aggregation
+— the engine could be swapped into a different car, or kept around after
+this car is gone. But if the `Car` creates its own `Engine` internally
+(as in the composition example above), the two are locked together for
+their entire lifetime.
+
+Some more examples:
+
+* A house has rooms.
+* A human body has a heart.
+* An order has order line items.
+* A book has chapters.
+
+In all these examples, the part is built as an essential piece of the
+whole, and removing the whole removes the part with it — a room doesn't
+get reassigned to a different house, and an order line item doesn't
+outlive the order it belongs to.
+
+So remember this simple line:
+
+Composition means one object owns another object completely, and the
+owned object's lifecycle is tied to the owner. It is the strongest form
+of a "has-a" relationship — stronger than aggregation, where the part
+could still survive independently.
 
 ## 4. Dependency
 
