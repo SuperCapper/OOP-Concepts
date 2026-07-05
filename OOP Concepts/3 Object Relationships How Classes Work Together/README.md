@@ -207,7 +207,69 @@ In simple words, dependency means one class uses another class for a short time.
 One class does not own the other class. It also does not keep the other class permanently inside itself. 
 It only uses it when needed. That is why dependency is considered the weakest relationship between classes.
 
-[insert here]
+Let's understand this with a simple real-world example.
+
+Imagine you are ordering food online. The `FoodOrderService` needs to
+send a confirmation message after the order is placed. For that, it can
+use a `MessageSender`. But the food order service does not own the
+message sender forever. It only uses it during the order process. Once
+the message is sent, the work is done. That is dependency.
+
+Here is a simple Python example:
+
+```python
+class MessageSender:
+    def send_message(self, phone_number, message):
+        print(f"Sending message to {phone_number}: {message}")
+```
+
+Now we create a `FoodOrderService` class.
+
+```python
+class FoodOrderService:
+    def place_order(self, food_item, phone_number, message_sender):
+        print(f"Order placed for: {food_item}")
+        message_sender.send_message(
+            phone_number,
+            f"Your order for {food_item} has been placed successfully.",
+        )
+```
+
+Now let's use it:
+
+```python
+order_service = FoodOrderService()
+message_sender = MessageSender()
+
+order_service.place_order("Pizza", "9876543210", message_sender)
+```
+
+Here, `FoodOrderService` depends on `MessageSender`. But notice one
+important thing. `FoodOrderService` is not storing `MessageSender` as an
+attribute. It is only using it as a method parameter:
+
+`place_order(self, food_item, phone_number, message_sender)`
+
+That means the relationship exists only while the `place_order()` method
+is running. After the method finishes, the relationship is gone. This is
+dependency. The class uses another class to complete some work, but it
+does not control its lifetime.
+
+Some more simple examples:
+
+* A report generator uses a printer.
+* A checkout service uses a discount calculator.
+* A controller uses a validation service.
+* A file uploader uses a file compressor.
+
+In all these cases, one class uses another class for a specific task.
+
+So remember this simple line:
+
+Dependency means one class temporarily uses another class to complete
+some work. It is a "uses-a" relationship. Dependency is weaker than
+association, aggregation, and composition because the object is not
+stored for a long time. It is just used when needed.
 
 ## Association vs. Aggregation vs. Composition vs. Dependency
 
