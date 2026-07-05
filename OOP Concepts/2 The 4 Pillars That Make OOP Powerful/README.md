@@ -237,18 +237,8 @@ Inheritance lets a class (the *subclass*/*child*) reuse and extend the
 attributes and methods of another class (the *superclass*/*parent*),
 modeling an "is-a" relationship.
 
-```python
-class Animal:
-    def __init__(self, name):
-        self.name = name
+[Insert here]
 
-    def speak(self):
-        return "..."
-
-class Dog(Animal):
-    def speak(self):
-        return "Woof!"
-```
 
 **Why it matters:** it avoids duplicating shared logic across related
 classes, and establishes a natural hierarchy (a `Dog` *is an* `Animal`).
