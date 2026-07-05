@@ -132,7 +132,101 @@ implementation later without breaking callers.
 
 ## 2. Abstraction
 
-{Insert here]
+In simple words, abstraction means hiding unnecessary details and showing
+only what is important. It helps us use something without knowing all the
+complex work happening behind the scenes.
+
+Let's take a real-world example.
+
+Think about using an ATM machine. When you want to withdraw money, you only
+do a few simple steps:
+
+* insert your card
+* enter your PIN
+* choose withdraw option
+* enter amount
+* collect cash
+
+That's it.
+
+But behind the scenes, many things happen. The ATM checks your card,
+verifies your PIN, talks to the bank server, checks your balance, updates
+your account, prints a receipt, and then gives you cash.
+
+As a user, you do not need to understand all this internal logic. You only
+see a simple interface. That is abstraction. It hides the complicated
+process and gives you a simple way to use it. In programming, abstraction
+works in the same way. We create simple methods for the outside world, and
+we hide the complex logic inside the class.
+
+Let's understand this with a simple `FoodOrder` example. Imagine we are
+building a food delivery app. The user only wants to place an order. They
+do not care about every internal step like checking restaurant
+availability, calculating delivery charges, applying discount, assigning
+delivery partner, and sending confirmation. So we can create a simple
+method called `place_order()`.
+
+```python
+class FoodOrder:
+    def place_order(self, food_item, user_location):
+        self._check_restaurant_availability(food_item)
+        self._calculate_delivery_charge(user_location)
+        self._apply_discount()
+        self._assign_delivery_partner()
+        self._send_confirmation()
+        print(f"Your order for {food_item} has been placed successfully.")
+
+    def _check_restaurant_availability(self, food_item):
+        print(f"Checking restaurant availability for {food_item}")
+
+    def _calculate_delivery_charge(self, user_location):
+        print(f"Calculating delivery charge for {user_location}")
+
+    def _apply_discount(self):
+        print("Applying available discount.")
+
+    def _assign_delivery_partner(self):
+        print("Assigning delivery partner.")
+
+    def _send_confirmation(self):
+        print("Sending order confirmation.")
+```
+
+Now the outside code can use it like this:
+
+```python
+order = FoodOrder()
+order.place_order("Pizza", "Delhi")
+```
+
+The user of this class only calls one simple method:
+
+`place_order()`
+
+They do not need to call all the small internal methods one by one.
+
+They do not need to know how the restaurant is checked.
+
+They do not need to know how delivery charge is calculated.
+
+They do not need to know how the delivery partner is assigned.
+
+All those details are hidden inside the class. This is abstraction. We
+expose only the important action and hide the complex steps behind it.
+This makes the code easier to use. It also makes the code easier to
+change. For example, tomorrow if we want to change how delivery partners
+are assigned, we can update the internal `_assign_delivery_partner()`
+method.
+
+The outside code will still call the same `place_order()` method. Nothing
+changes for the user of the class. That is the beauty of abstraction. It
+gives a simple outside view and hides the complex inside work.
+
+So remember this simple line:
+
+Abstraction hides complexity and shows only what is necessary.
+Encapsulation protects the internal data. Abstraction hides the internal
+process. Both are related, but they solve different problems.
 
 **Why it matters:** it reduces cognitive load — you work with a simple,
 stable interface instead of every implementation detail.
