@@ -289,5 +289,107 @@ association rather than deep inheritance trees.
 
 ## 5. Realization
 
-[insert here]
+The word may sound a little technical, but the idea is simple. Realization
+is the relationship between an interface and the class that implements
+that interface. In simple words:
+
+An interface defines a contract. A class follows that contract and
+provides the real working code. That relationship is called realization.
+Let's understand this with a real-world example. Imagine a delivery app.
+
+The app supports different delivery partners:
+
+* Bike delivery
+* Car delivery
+* Drone delivery
+
+All of them must do one common job:
+
+Deliver the order. So first, we create an interface called
+`DeliveryPartner`.
+
+```python
+from abc import ABC, abstractmethod
+
+class DeliveryPartner(ABC):
+    @abstractmethod
+    def deliver_order(self, order_id, address):
+        ...
+```
+
+This interface says:
+
+Any delivery partner must have a `deliver_order()` method. But the
+interface does not say how the delivery will happen. Now different
+classes can implement this interface in their own way.
+
+```python
+class BikeDelivery(DeliveryPartner):
+    def deliver_order(self, order_id, address):
+        print(f"Delivering order {order_id} by bike to {address}")
+
+
+class CarDelivery(DeliveryPartner):
+    def deliver_order(self, order_id, address):
+        print(f"Delivering order {order_id} by car to {address}")
+
+
+class DroneDelivery(DeliveryPartner):
+    def deliver_order(self, order_id, address):
+        print(f"Delivering order {order_id} by drone to {address}")
+```
+
+Here, `BikeDelivery`, `CarDelivery`, and `DroneDelivery` are realizing the
+`DeliveryPartner` interface. That means they are accepting the contract
+and giving real implementation for it. The interface only says what
+should be done. The class decides how it should be done. Now we can use
+it like this:
+
+```python
+class DeliveryService:
+    def __init__(self, delivery_partner):
+        self.delivery_partner = delivery_partner
+
+    def ship_order(self, order_id, address):
+        self.delivery_partner.deliver_order(order_id, address)
+```
+
+Now `DeliveryService` does not care whether the order is delivered by
+bike, car, or drone.
+
+It only depends on the interface:
+
+`DeliveryPartner`
+
+This makes the code flexible.
+
+```python
+partner = BikeDelivery()
+service = DeliveryService(partner)
+service.ship_order("ORD101", "Delhi")
+```
+
+Tomorrow, if we want to add a new delivery method, like `RobotDelivery`,
+we do not need to change the main delivery service. We only create a new
+class and implement the same interface.
+
+```python
+class RobotDelivery(DeliveryPartner):
+    def deliver_order(self, order_id, address):
+        print(f"Delivering order {order_id} by robot to {address}")
+```
+
+That is the power of realization. It connects the abstract idea with the
+real implementation. The interface is the promise. The class is the
+actual work.
+
+So remember this simple line:
+
+Realization means a class implements an interface and provides real code
+for the methods promised by that interface. This is also what makes
+polymorphism possible. Because when many classes implement the same
+interface, we can use them through one common type and let each class
+behave in its own way.
+
+So realization is the bridge between a contract and the actual behavior.
 
