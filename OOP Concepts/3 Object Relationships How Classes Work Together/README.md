@@ -86,7 +86,8 @@ between objects.
 
 Aggregation is a special type of association. 
 In simple words, aggregation means one object has another object, but the child object can still live independently. 
-It is a has-a relationship, but not a very strict one.
+It is a has-a relationship, where one class contains references to other objects, but those objects can exist independently of the container. 
+It's a whole-part relationship with weak ownership.
 
 <img width="1100" height="880" alt="image" src="https://github.com/user-attachments/assets/3c1fbb91-7455-43e2-acd0-560f4eb93988" />
 
@@ -172,22 +173,6 @@ Aggregation means one object has another object, but the child object can
 still exist independently. In association, objects are just connected. In
 aggregation, one object has another object. But the ownership is still
 weak.
-
-A "has-a" relationship where one class contains references to other
-objects, but those objects can exist independently of the container. It's
-a whole-part relationship with weak ownership.
-
-```python
-class Library:
-    def __init__(self):
-        self.books = []   # Books can exist even if the Library doesn't
-
-    def add_book(self, book):
-        self.books.append(book)
-```
-
-If the `Library` is deleted, the `Book` objects it referenced can still
-exist elsewhere.
 
 ## 3. Composition
 
