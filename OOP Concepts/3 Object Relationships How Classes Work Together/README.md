@@ -286,3 +286,8 @@ Inheritance (from the 4 pillars) models "is-a" relationships. These four
 relationships model "has-a" and "uses-a" relationships — and most
 real-world object models are built primarily from composition and
 association rather than deep inheritance trees.
+
+## 5. Realization
+
+[insert here]
+
