@@ -201,14 +201,13 @@ A weaker, often temporary relationship where one class uses another,
 typically just within a method, without storing a long-term reference to
 it.
 
-```python
-class OrderProcessor:
-    def process(self, payment_gateway, order):
-        payment_gateway.charge(order.total)   # used, not stored
-```
+<img width="1100" height="877" alt="image" src="https://github.com/user-attachments/assets/da90bcd7-d6c8-40ac-ab14-86d5ba867564" />
 
-`OrderProcessor` depends on a `payment_gateway` only for the duration of
-`process()` — it doesn't hold onto it as part of its own state.
+In simple words, dependency means one class uses another class for a short time. It is a temporary relationship. 
+One class does not own the other class. It also does not keep the other class permanently inside itself. 
+It only uses it when needed. That is why dependency is considered the weakest relationship between classes.
+
+[insert here]
 
 ## Association vs. Aggregation vs. Composition vs. Dependency
 
