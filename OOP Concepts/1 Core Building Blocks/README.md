@@ -176,6 +176,11 @@ class SMSNotification(NotificationService):
 class WhatsAppNotification(NotificationService):
     def send_message(self, user, message):
         print(f"Sending WhatsApp message to {user}: {message}")
+
+
+class PushNotification(NotificationService):
+    def send_message(self, user, message):
+        print(f"Sending push notification to {user}: {message}")
 ```
 
 Here, all three classes follow the same interface.
