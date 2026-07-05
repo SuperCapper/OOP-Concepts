@@ -6,10 +6,10 @@ reason about.
 
 ## 1. Encapsulation
 
-Encapsulation is one of the most important pillars of OOP. In simple words,
-encapsulation means keeping data and methods together inside a class, and
-not allowing other parts of the program to directly change the internal
-data.
+Encapsulation is one of the most important pillars of OOP. 
+Encapsulation means bundling data and the methods that operate on it inside a single unit (a class), 
+and hiding internal details from the outside world. 
+Callers interact with an object through its public interface, not by reaching into its internals directly.
 
 It is like putting important data inside a safe box. Other people can use
 the safe box through proper buttons or keys, but they cannot directly touch
@@ -125,27 +125,6 @@ So remember this simple line:
 
 Encapsulation protects the data by controlling how it is accessed and
 changed. It hides the internal details of a class.
-
-***
-
-Encapsulation means bundling data and the methods that operate on it inside
-a single unit (a class), and hiding internal details from the outside world.
-Callers interact with an object through its public interface, not by
-reaching into its internals directly.
-
-```python
-class Account:
-    def __init__(self, balance):
-        self._balance = balance          # "private" by convention
-
-    def deposit(self, amount):
-        if amount <= 0:
-            raise ValueError("Deposit must be positive")
-        self._balance += amount
-
-    def get_balance(self):
-        return self._balance
-```
 
 **Why it matters:** it protects an object's internal state from being put
 into an invalid state by outside code, and lets you change the
