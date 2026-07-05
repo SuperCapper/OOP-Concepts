@@ -203,7 +203,15 @@ It only knows one thing:
 There is a NotificationService, and it can send a message. That is the power of an interface. 
 Later, if we want to switch from email to SMS, we do not need to rewrite the AlertManager class. We only change the object we pass into it.
 
-[insert here]
+```python
+email = EmailNotification()
+alert1 = AlertManager(email)
+alert1.send_alert("Shivam")
+
+sms = SMSNotification()
+alert2 = AlertManager(sms)
+alert2.send_alert("Rahul")
+```
 
 ## 4. Constructor
 
