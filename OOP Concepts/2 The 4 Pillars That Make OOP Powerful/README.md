@@ -378,7 +378,127 @@ Polymorphism means objects of different classes can be treated through a
 common interface, with each responding to the same method call in its own
 way.
 
-[Insert here]
+Polymorphism is one of those words that sounds difficult at first. But
+the idea is actually simple. Polymorphism means many forms. In OOP, it
+means the same action can behave differently depending on the object that
+is using it. Let's understand this with a real-world example.
+
+Think about a payment system. In an app, users may pay using different
+methods:
+
+* credit card
+* UPI
+* PayPal
+
+All payment methods have one common action:
+
+`pay()`
+
+But each payment method performs that action in its own way. Credit card
+payment uses card details. UPI payment uses a UPI ID. PayPal payment uses
+a PayPal account. The method name is the same, but the behavior is
+different. That is polymorphism.
+
+There are mainly two types of polymorphism:
+
+**Compile-time polymorphism**
+This happens when we use the same method name with different parameters.
+This is also called method overloading.
+
+**Runtime polymorphism**
+This happens when child classes use the same method name but provide
+their own implementation. This is also called method overriding.
+
+Runtime polymorphism is more commonly used in real projects. Let's
+understand it with a simple example.
+
+First, we create a common interface:
+
+```python
+from abc import ABC, abstractmethod
+
+class PaymentMethod(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        ...
+```
+
+This interface says:
+
+Any payment method must have a `pay()` method. Now we can create
+different payment classes.
+
+```python
+class CreditCardPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using Credit Card.")
+
+
+class UpiPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using UPI.")
+
+
+class PayPalPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using PayPal.")
+```
+
+Here, all three classes follow the same interface.
+
+They all have the same method:
+
+`pay()`
+
+But each class handles payment in a different way.
+
+Now look at this code:
+
+```python
+payment_methods = [
+    CreditCardPayment(),
+    UpiPayment(),
+    PayPalPayment(),
+]
+
+for payment_method in payment_methods:
+    payment_method.pay(1000)
+```
+
+In this loop, we are not checking whether the object is a credit card
+payment, UPI payment, or PayPal payment.
+
+We simply call:
+
+`payment_method.pay(1000)`
+
+And Python automatically runs the correct version of the `pay()` method
+based on the actual object.
+
+If the object is `CreditCardPayment`, it runs the credit card logic. If
+the object is `UpiPayment`, it runs the UPI logic. If the object is
+`PayPalPayment`, it runs the PayPal logic.
+
+That is the power of polymorphism. The same method call can produce
+different behavior depending on the object. Now imagine tomorrow we want
+to add a new payment method, like wallet payment.
+
+We can simply create a new class:
+
+```python
+class WalletPayment(PaymentMethod):
+    def pay(self, amount):
+        print(f"Paid ₹{amount} using Wallet.")
+```
+
+We do not need to rewrite the whole checkout logic. We just add the new
+class and use it. This makes our code flexible and easy to extend.
+
+So remember this simple line:
+
+Polymorphism allows different objects to respond to the same method in
+their own way. It helps us write code that works with a common
+interface, while each class handles the actual behavior differently.
 
 **Why it matters:** calling code doesn't need to know the exact type it's
 working with — it just needs to know the object supports a given method,
