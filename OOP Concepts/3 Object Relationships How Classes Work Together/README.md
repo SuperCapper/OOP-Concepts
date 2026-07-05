@@ -12,7 +12,75 @@ Both objects are connected, but they can still exist independently. One object d
 
 <img width="1100" height="825" alt="image" src="https://github.com/user-attachments/assets/7551207b-5204-4794-8dde-9756d30687ab" />
 
-[insert here]
+Let's take a simple real-world example.
+
+Think about a teacher and a student. A teacher can teach many students. A
+student can learn from many teachers. But both can exist separately. If
+one student leaves the class, the teacher still exists. If one teacher
+leaves the school, the student can still learn from another teacher. So
+the relationship is there, but ownership is not strong.
+
+That is association.
+
+Let's see this in Python:
+
+```python
+class Teacher:
+    def __init__(self, name):
+        self.name = name
+        self.students = []
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def show_students(self):
+        print(f"{self.name} teaches:")
+        for student in self.students:
+            print(student.name)
+```
+
+Now we create a `Student` class:
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+```
+
+Now we can connect teacher and student objects:
+
+```python
+teacher = Teacher("Mr. Sharma")
+
+student1 = Student("Aman")
+student2 = Student("Priya")
+
+teacher.add_student(student1)
+teacher.add_student(student2)
+teacher.show_students()
+```
+
+Here, `Teacher` and `Student` are two separate objects. The teacher object
+knows about the student objects. But the students are not completely
+owned by the teacher. They are created separately. That means they can
+exist even outside the `Teacher` class. This is the main point of
+association. Objects are connected, but they are still independent.
+
+You can think of association like this:
+
+A teacher teaches students.
+A doctor treats patients.
+A driver drives a car.
+A customer places an order.
+
+In all these examples, objects are related, but one object does not
+fully control the life of the other object.
+
+So remember this simple line:
+
+Association means one object is connected to another object, but both
+can live independently. Association is the most general relationship
+between objects.
 
 
 
