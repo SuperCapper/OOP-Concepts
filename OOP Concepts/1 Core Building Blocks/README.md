@@ -222,7 +222,11 @@ This makes our code flexible.
 
 If tomorrow we want to add push notifications, we can simply create a new class:
 
-[insert here]
+```python
+class PushNotification(NotificationService):
+    def send_message(self, user, message):
+        print(f"Sending push notification to {user}: {message}")
+```
 
 We do not need to change the old code. We just add a new class that follows the same interface. That is why interfaces are very useful in real projects. They help us write code that is easy to extend, easy to replace, and easy to maintain.
 
