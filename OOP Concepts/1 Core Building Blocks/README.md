@@ -218,6 +218,19 @@ alert2 = AlertManager(sms)
 alert2.send_alert("Rahul")
 ```
 
+This makes our code flexible.
+
+If tomorrow we want to add push notifications, we can simply create a new class:
+
+[insert here]
+
+We do not need to change the old code. We just add a new class that follows the same interface. That is why interfaces are very useful in real projects. They help us write code that is easy to extend, easy to replace, and easy to maintain.
+
+So remember this simple idea:
+
+An interface defines what must be done. A class decides how it will be done. Interfaces tell us what behavior should exist. 
+
+
 ## 4. Constructor
 
 The constructor is the special method that runs when an object is created.
