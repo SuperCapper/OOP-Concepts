@@ -132,22 +132,7 @@ implementation later without breaking callers.
 
 ## 2. Abstraction
 
-Abstraction means exposing only the essential behavior of an object while
-hiding the complexity of how it works. A caller can call `car.start()`
-without knowing anything about fuel injection or ignition timing.
-
-```python
-from abc import ABC, abstractmethod
-
-class PaymentMethod(ABC):
-    @abstractmethod
-    def pay(self, amount):
-        ...
-
-class CreditCard(PaymentMethod):
-    def pay(self, amount):
-        print(f"Charging ${amount} to credit card")
-```
+{Insert here]
 
 **Why it matters:** it reduces cognitive load — you work with a simple,
 stable interface instead of every implementation detail.
