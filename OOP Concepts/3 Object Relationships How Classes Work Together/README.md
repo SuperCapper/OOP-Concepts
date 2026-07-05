@@ -74,24 +74,13 @@ A driver drives a car.
 A customer places an order.
 
 In all these examples, objects are related, but one object does not
-fully control the life of the other object.
+fully control the lifecycle of the other object.
 
 So remember this simple line:
 
 Association means one object is connected to another object, but both
 can live independently. Association is the most general relationship
 between objects.
-
-
-
-```python
-class Teacher:
-    def teach(self, student):
-        print(f"Teaching {student.name}")
-```
-
-A `Teacher` and a `Student` are associated, but neither owns the other's
-lifecycle.
 
 ## 2. Aggregation
 
