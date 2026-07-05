@@ -6,8 +6,15 @@ depend on one another.
 
 ## 1. Association
 
-A general relationship where one class uses or interacts with another,
-without owning it. Both objects can exist independently.
+A general relationship where one class uses or interacts with another, without owning it.
+In simple words, association means one object knows about another object. 
+Both objects are connected, but they can still exist independently. One object does not fully own the other object.
+
+<img width="1100" height="825" alt="image" src="https://github.com/user-attachments/assets/7551207b-5204-4794-8dde-9756d30687ab" />
+
+[insert here]
+
+
 
 ```python
 class Teacher:
