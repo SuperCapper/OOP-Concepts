@@ -378,11 +378,7 @@ Polymorphism means objects of different classes can be treated through a
 common interface, with each responding to the same method call in its own
 way.
 
-```python
-animals = [Dog("Rex"), Cat("Whiskers")]
-for a in animals:
-    print(a.speak())   # each subclass provides its own behavior
-```
+[Insert here]
 
 **Why it matters:** calling code doesn't need to know the exact type it's
 working with — it just needs to know the object supports a given method,
