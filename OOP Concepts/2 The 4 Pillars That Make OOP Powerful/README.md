@@ -6,7 +6,125 @@ reason about.
 
 ## 1. Encapsulation
 
-[Insert here]
+Encapsulation is one of the most important pillars of OOP. In simple words,
+encapsulation means keeping data and methods together inside a class, and
+not allowing other parts of the program to directly change the internal
+data.
+
+It is like putting important data inside a safe box. Other people can use
+the safe box through proper buttons or keys, but they cannot directly touch
+everything inside.
+
+In programming, this helps us protect our object from invalid changes.
+Let's understand this with a simple bank account example.
+
+A bank account has some data:
+
+* account holder name
+* balance
+
+And it has some actions:
+
+* deposit money
+* withdraw money
+* check balance
+
+Now imagine if the balance is public and anyone can change it directly.
+
+```python
+class BankAccount:
+    def __init__(self):
+        self.account_holder = None
+        self.balance = None
+```
+
+Now someone can do this:
+
+```python
+account = BankAccount()
+account.account_holder = "Shivam"
+account.balance = 5000
+account.balance = -10000  # Wrong value
+```
+
+This is a problem. A real bank account balance should not become negative
+like this without any proper rule. But because `balance` is public, anyone
+can change it directly. This makes the object unsafe. Now let's use
+encapsulation.
+
+```python
+class BankAccount:
+    def __init__(self, account_holder, opening_balance):
+        self._account_holder = account_holder
+        if opening_balance >= 0:
+            self._balance = opening_balance
+        else:
+            self._balance = 0
+
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"Deposited: {amount}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+            print(f"Withdrawn: {amount}")
+        else:
+            print("Invalid withdrawal amount.")
+
+    def get_balance(self):
+        return self._balance
+
+    def get_account_holder(self):
+        return self._account_holder
+```
+
+Now the important data is private.
+
+```python
+self._balance
+```
+
+*(Python has no true `private` keyword like Java — a leading underscore is
+just a convention signaling "internal, don't touch directly.")*
+
+This means no one can directly change the balance from outside the class as
+intended. They shouldn't do this anymore:
+
+```python
+account.balance = -10000  # Not allowed
+```
+
+Instead, they have to use proper methods like:
+
+```python
+account = BankAccount("Shivam", 5000)
+account.deposit(2000)
+account.withdraw(1000)
+print(account.get_balance())
+```
+
+Now the class controls how the balance changes. If someone tries to deposit
+a negative amount, the class can reject it. If someone tries to withdraw
+more money than available, the class can stop it. That is the main idea of
+encapsulation. We hide the internal data and expose only safe methods to
+work with that data.
+
+This makes our code more secure, more controlled, and easier to maintain.
+If tomorrow we want to add more rules, like minimum balance, transaction
+charges, or daily withdrawal limits, we can add them inside the
+`BankAccount` class.
+
+The outside code does not need to know all these internal details. It only
+uses simple methods like `deposit()`, `withdraw()`, and `get_balance()`.
+
+So remember this simple line:
+
+Encapsulation protects the data by controlling how it is accessed and
+changed. It hides the internal details of a class.
 
 ***
 
