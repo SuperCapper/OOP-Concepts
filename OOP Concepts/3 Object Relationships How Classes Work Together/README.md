@@ -68,10 +68,10 @@ association. Objects are connected, but they are still independent.
 
 You can think of association like this:
 
-A teacher teaches students.
-A doctor treats patients.
-A driver drives a car.
-A customer places an order.
+* A teacher teaches students.
+* A doctor treats patients.
+* A driver drives a car.
+* A customer places an order.
 
 In all these examples, objects are related, but one object does not
 fully control the lifecycle of the other object.
@@ -83,6 +83,14 @@ can live independently. Association is the most general relationship
 between objects.
 
 ## 2. Aggregation
+
+Aggregation is a special type of association. 
+In simple words, aggregation means one object has another object, but the child object can still live independently. 
+It is a has-a relationship, but not a very strict one.
+
+<img width="1100" height="880" alt="image" src="https://github.com/user-attachments/assets/3c1fbb91-7455-43e2-acd0-560f4eb93988" />
+
+[insert here]
 
 A "has-a" relationship where one class contains references to other
 objects, but those objects can exist independently of the container. It's
